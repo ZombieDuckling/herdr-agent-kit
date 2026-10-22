@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenSCAD Parametric Generation"
+  short_description: "Generate and validate parametric OpenSCAD models"
+  default_prompt: "Use $openscad-parametric-generation to create a parametric OpenSCAD model for a 3D-printable part."

@@ -1,0 +1,107 @@
+[
+  {
+    "file": "00_agent_orientation.md",
+    "bytes": 3034,
+    "lines": 60
+  },
+  {
+    "file": "01_openscad_mental_model.md",
+    "bytes": 3107,
+    "lines": 114
+  },
+  {
+    "file": "02_syntax_values_scope.md",
+    "bytes": 3363,
+    "lines": 174
+  },
+  {
+    "file": "03_geometry_primitives.md",
+    "bytes": 3893,
+    "lines": 175
+  },
+  {
+    "file": "04_transformations.md",
+    "bytes": 4069,
+    "lines": 195
+  },
+  {
+    "file": "05_boolean_csg.md",
+    "bytes": 3780,
+    "lines": 176
+  },
+  {
+    "file": "06_2d_to_3d_extrusion.md",
+    "bytes": 3675,
+    "lines": 144
+  },
+  {
+    "file": "07_functions_modules_children.md",
+    "bytes": 3191,
+    "lines": 140
+  },
+  {
+    "file": "08_control_flow_math_vectors.md",
+    "bytes": 3162,
+    "lines": 163
+  },
+  {
+    "file": "09_customizer_parametric_inputs.md",
+    "bytes": 3010,
+    "lines": 138
+  },
+  {
+    "file": "10_import_export_cli.md",
+    "bytes": 3043,
+    "lines": 131
+  },
+  {
+    "file": "11_libraries_use_include.md",
+    "bytes": 2839,
+    "lines": 93
+  },
+  {
+    "file": "12_3d_print_design_rules.md",
+    "bytes": 3436,
+    "lines": 134
+  },
+  {
+    "file": "13_debugging_validation.md",
+    "bytes": 3182,
+    "lines": 171
+  },
+  {
+    "file": "14_ai_generation_protocol.md",
+    "bytes": 3747,
+    "lines": 174
+  },
+  {
+    "file": "15_common_model_patterns.md",
+    "bytes": 4166,
+    "lines": 186
+  },
+  {
+    "file": "16_agent_prompt_contract.md",
+    "bytes": 3051,
+    "lines": 125
+  },
+  {
+    "file": "17_reference_cheatsheet.md",
+    "bytes": 2675,
+    "lines": 167
+  },
+  {
+    "file": "18_sources_and_attribution.md",
+    "bytes": 2292,
+    "lines": 33
+  },
+  {
+    "file": "19_next_step_repo_structure.md",
+    "bytes": 2827,
+    "lines": 119
+  },
+  {
+    "file": "README.md",
+    "bytes": 2872,
+    "lines": 85
+  }
+]

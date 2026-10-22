@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Host-side wrapper: run the print3d CLI inside the hermes-3d-toolchain container.
+#
+# The container gets no network and runs as the invoking user, with only the
+# workspaces directory mounted. Paths printed by print3d are host paths, so
+# the agent can pass them straight to Telegram.
+#
+# Env overrides:
+#   HERMES_3D_IMAGE       toolchain image      (default hermes-3d-toolchain:0.1.0)
+#   HERMES_3D_WORKSPACES  host workspaces dir  (default /srv/hermes-3d/workspaces)
+set -euo pipefail
+
+IMAGE="${HERMES_3D_IMAGE:-hermes-3d-toolchain:0.1.0}"
+WORKSPACES="${HERMES_3D_WORKSPACES:-/srv/hermes-3d/workspaces}"
+
+mkdir -p "$WORKSPACES"
+
+exec docker run --rm --network none \
+    --user "$(id -u):$(id -g)" \
+    -e HOME=/tmp \
+    -v "$WORKSPACES":/work \
+    -e PRINT3D_WORKSPACES=/work \
+    -e PRINT3D_PUBLIC_ROOT="$WORKSPACES" \
+    "$IMAGE" print3d "$@"

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Wrapper: run codex_image.py with Hermes Agent's own Python, so its image provider can be imported.
+# Needs Hermes Agent (https://github.com/NousResearch/hermes-agent) and `hermes auth codex` once.
+H="${HERMES_AGENT_DIR:-$HOME/.hermes/hermes-agent}"
+PY="$H/venv/bin/python"; [ -x "$PY" ] || PY=python3
+exec "$PY" "$(dirname "$(readlink -f "$0" 2>/dev/null || python3 -c 'import os,sys;print(os.path.realpath(sys.argv[1]))' "$0")")/codex_image.py" "$@"

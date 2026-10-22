@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Host-side wrapper: run the CadQuery MCP server (stdio) inside the toolchain
+# container. Configure it as a stdio MCP server in ~/.hermes/config.yaml.
+#
+# The server executes LLM-generated CadQuery code, hence: no network, non-root,
+# only the workspaces directory mounted (visible inside as /work).
+set -euo pipefail
+
+IMAGE="${HERMES_3D_IMAGE:-hermes-3d-toolchain:0.1.0}"
+WORKSPACES="${HERMES_3D_WORKSPACES:-/srv/hermes-3d/workspaces}"
+
+mkdir -p "$WORKSPACES"
+
+exec docker run -i --rm --network none \
+    --user "$(id -u):$(id -g)" \
+    -e HOME=/tmp \
+    -v "$WORKSPACES":/work \
+    "$IMAGE" cadquery-mcp

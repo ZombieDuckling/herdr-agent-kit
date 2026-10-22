@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}} · {{SITE_NAME}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/personal.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <button class="icon-btn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="sidenav">Menu</button>
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">h</span><span>{{SITE_NAME}}</span></a>
+    <span class="spacer"></span>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch light or dark theme">Theme</button>
+  </header>
+  <div class="shell">
+    <nav class="sidenav" id="sidenav" data-nav aria-label="Guide"></nav>
+    <main id="main">
+      <article class="content">
+        <!-- CONTENT: replace this comment with the page. Use only the components in demo/COMPONENTS.md. -->
+        {{CONTENT}}
+        <nav class="pager" data-pager aria-label="Previous and next page"></nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site">Built for {{PERSON}} by a lead agent and its workers in herdr, from the herdr-agent-bootstrap kit.</footer>
+</body>
+</html>

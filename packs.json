@@ -1,0 +1,61 @@
+{
+  "_about": "Third-party skill packs, installed from their own source so licences and updates stay with their authors. `scripts/install-packs.sh <pack> [<pack> ...]` installs them; `--list` shows them. The `core` skills of this kit are vendored in skills/ and installed by install.sh.",
+  "packs": {
+    "design": {
+      "why": "Award-level web design: build from a one-line prompt, score sites like an Awwwards jury, polish UI, design references.",
+      "items": [
+        { "name": "juliobsz/skills (awwwards, jury)", "license": "MIT", "run": "npx -y skills@latest add juliobsz/skills -g -y -s '*' -a '*'", "after": "scripts/apply-overrides.sh awwwards jury" },
+        { "name": "pbakaus/impeccable", "license": "Apache-2.0", "run": "npx -y skills@latest add pbakaus/impeccable -g -y -s '*' -a '*'" },
+        { "name": "nextlevelbuilder/ui-ux-pro-max-skill", "license": "MIT", "run": "npx -y skills@latest add nextlevelbuilder/ui-ux-pro-max-skill -g -y -s '*' -a '*'" },
+        { "name": "vercel-labs/agent-skills (web design guidelines)", "license": "see repo", "run": "npx -y skills@latest add vercel-labs/agent-skills -g -y -s '*' -a '*'" }
+      ]
+    },
+    "engineering": {
+      "why": "Disciplined software process: brainstorm, plan, TDD, debugging, code review, shipping, QA in a real browser.",
+      "items": [
+        { "name": "obra/superpowers", "license": "MIT", "run": "npx -y skills@latest add obra/superpowers -g -y -s '*' -a '*'" },
+        { "name": "garrytan/gstack (Claude Code)", "license": "MIT", "needs": "claude", "run": "[ -d ~/.claude/skills/gstack ] || (git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup)" },
+        { "name": "get-shit-done (GSD) project workflow", "license": "MIT", "needs": "claude", "run": "npx -y get-shit-done-cc@latest" }
+      ]
+    },
+    "security": {
+      "why": "Security auditing: semgrep and CodeQL rules, fuzzing, smart-contract scanners, insecure defaults, variant analysis.",
+      "items": [
+        { "name": "trailofbits/skills", "license": "CC-BY-SA-4.0", "run": "npx -y skills@latest add trailofbits/skills -g -y -s '*' -a '*'" }
+      ]
+    },
+    "cloudflare": {
+      "why": "Building and deploying on Cloudflare: Workers, Pages, D1, Durable Objects, Wrangler, Turnstile, Zero Trust.",
+      "items": [
+        { "name": "cloudflare/skills", "license": "Apache-2.0", "run": "npx -y skills@latest add cloudflare/skills -g -y -s '*' -a '*'" }
+      ]
+    },
+    "documents": {
+      "why": "Office files and PDFs: create and edit .docx, .pptx, .xlsx and PDF.",
+      "items": [
+        { "name": "anthropics/skills", "license": "see repo (some skills are source-available, not open source)", "run": "npx -y skills@latest add anthropics/skills -g -y -s '*' -a '*'" }
+      ]
+    },
+    "claude-mods": {
+      "why": "Live lines above the Claude Code prompt: plan usage (usage-meter) and running workers (agent-radar). The herdr-lead-mods skill reads them.",
+      "items": [
+        { "name": "hamzafer/claude-code-mods: usage-meter, agent-radar", "license": "MIT", "needs": "claude", "run": "claude plugin marketplace add hamzafer/claude-code-mods && claude plugin install usage-meter@claude-code-mods && claude plugin install agent-radar@claude-code-mods" }
+      ]
+    },
+    "hermes": {
+      "why": "Hermes Agent: an always-on personal agent (messaging, cron jobs, memory) and the easiest no-API-key image backend (`hermes auth codex`, used by tools/codex-image).",
+      "items": [
+        { "name": "NousResearch/hermes-agent", "license": "MIT", "run": "echo 'Install Hermes by following https://github.com/NousResearch/hermes-agent#installation, then run: hermes auth codex'" }
+      ]
+    }
+  },
+  "not_included": {
+    "why": "Skills that were on the original machines but are not shipped or installed by this kit.",
+    "items": [
+      "Client- and person-specific skills (one client's site, one person's CV, LinkedIn voice or course paperwork).",
+      "Jailbreak, model-uncensoring and dark-web access skills: not appropriate to hand out.",
+      "antislop: its origin and licence could not be confirmed.",
+      "Skills built into an agent (hermes bundled skills, Codex system skills): they arrive with that agent."
+    ]
+  }
+}
