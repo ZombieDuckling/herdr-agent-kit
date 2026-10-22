@@ -108,7 +108,7 @@ EOF
 python3 <kit>/demo/tools/assemble.py $SITE           # wraps pages in the shell; builds "How this site was built"
 cd ~/herdr-agent-demo && { [ -f package.json ] || npm init -y >/dev/null; } && { [ -d node_modules/playwright ] || npm i -D playwright @axe-core/playwright >/dev/null; } && npx playwright install chromium >/dev/null; cd -
 <kit>/demo/tools/serve.sh $SITE 4321                  # run this in its own tab, label "server"
-(cd ~/herdr-agent-demo && node <kit>/skills/quality/web-qa/scripts/check-site.mjs http://localhost:4321/ --out $SITE/../qa)
+(cd ~/herdr-agent-demo && node <kit>/skills/quality/web-qa/scripts/check-site.mjs http://127.0.0.1:4321/ --out $SITE/../qa)
 ```
 
 Fix until `ok: true`: 0 console errors, 0 failed requests, 0 broken links, 0 serious/critical axe, no
@@ -118,11 +118,11 @@ images; if not, say "visual check: not done". Add the final numbers to the build
 
 ## 7. Hand it over
 
-Open the site for them (`open http://localhost:4321/` on macOS, `xdg-open` on Linux) and report in the
+Open the site for them (`open http://127.0.0.1:4321/` on macOS, `xdg-open` on Linux; use 127.0.0.1, because another app may hold the same port on `localhost`) and report in the
 `fable-report` shape:
 
 ```
-Your site is ready: http://localhost:4321/  (nothing is online)
+Your site is ready: http://127.0.0.1:4321/  (nothing is online)
 Built by <N> <kind> workers in herdr tabs, <M> pages, checked page by page.
 QA: <pages> pages · console errors 0 · broken links 0 · axe serious 0 · phone overflow 0
 Personal: <2-3 things that are about them>

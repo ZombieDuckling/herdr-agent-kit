@@ -3,5 +3,5 @@
 set -euo pipefail
 SITE="${1:-$HOME/herdr-agent-demo/site}"; PORT="${2:-4321}"
 cd "$SITE"
-echo "http://localhost:$PORT/"
+echo "http://127.0.0.1:$PORT/"
 exec python3 -m http.server "$PORT" --bind 127.0.0.1

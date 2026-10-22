@@ -72,7 +72,7 @@ while (queue.length && seen.size < maxPages) {
           if (!r || r.status() >= 400) report.brokenLinks.push({ from: url, to: u.href, status: r ? r.status() : 'failed' });
         }
       }
-      const dead = await page.$$eval('button', bs => bs.filter(b => !b.disabled && !b.onclick && !b.closest('form') && !b.hasAttribute('aria-controls') && !b.hasAttribute('aria-expanded') && !b.dataset.action && !b.getAttribute('type')?.match(/submit|reset/)).map(b => (b.innerText || b.getAttribute('aria-label') || '').trim().slice(0, 60)));
+      const dead = await page.$$eval('button', bs => bs.filter(b => !b.disabled && !b.onclick && !b.closest('form') && !b.hasAttribute('aria-controls') && !b.hasAttribute('aria-expanded') && !Object.keys(b.dataset).length && !b.getAttribute('type')?.match(/submit|reset/)).map(b => (b.innerText || b.getAttribute('aria-label') || '').trim().slice(0, 60)));
       for (const d of dead) report.deadButtons.push({ url, button: d, note: 'no inline handler, form, aria-controls or data-action: confirm a listener exists' });
     }
     await context.close();

@@ -61,7 +61,7 @@ function menu() {
 function copyButtons() {
   document.querySelectorAll('pre').forEach(pre => {
     const b = document.createElement('button');
-    b.className = 'copy'; b.type = 'button'; b.textContent = 'copy';
+    b.className = 'copy'; b.type = 'button'; b.textContent = 'copy'; b.dataset.action = 'copy';
     b.setAttribute('aria-label', 'Copy this code');
     b.addEventListener('click', async () => {
       const text = (pre.querySelector('code') || pre).innerText.replace(/\ncopy$/, '');
@@ -80,7 +80,7 @@ async function catalogues() {
     const groups = [...new Set(items.map(x => x[key]))];
     el.innerHTML = `<div class="filters"><label class="count" for="q-${key}">Search</label>
       <input type="search" id="q-${key}" placeholder="Search names and descriptions">
-      ${groups.map(g => `<button type="button" class="chip" aria-pressed="false" data-g="${g}">${g}</button>`).join('')}
+      ${groups.map(g => `<button type="button" class="chip" data-action="filter" aria-pressed="false" data-g="${g}">${g}</button>`).join('')}
       <span class="count" aria-live="polite"></span></div><div class="list"></div>`;
     const q = el.querySelector('input'), list = el.querySelector('.list'), count = el.querySelector('.count[aria-live]');
     const chips = [...el.querySelectorAll('.chip')];
@@ -115,4 +115,11 @@ async function machine() {
     ${row('node', m.node, !!m.node)}${row('gh', m.gh, !!m.gh)}${row('semgrep', m.semgrep, !!m.semgrep)}</tbody></table>`;
 }
 
-theme(); buildNav(); menu(); copyButtons(); catalogues(); machine();
+// Wide tables scroll sideways; make them reachable and readable by keyboard.
+function scrollableTables() {
+  document.querySelectorAll('table').forEach((t, i) => {
+    if (t.scrollWidth > t.clientWidth + 1) { t.tabIndex = 0; t.setAttribute('role', 'region'); t.setAttribute('aria-label', t.querySelector('th')?.innerText ? `Table ${i + 1}, scrolls sideways` : 'Table'); }
+  });
+}
+
+theme(); buildNav(); menu(); copyButtons(); catalogues().then(scrollableTables); machine().then(scrollableTables); scrollableTables();

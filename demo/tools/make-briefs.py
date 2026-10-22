@@ -32,7 +32,7 @@ PAGES = [  # slug, source, eyebrow
 ]
 EXTRA = {
     'index': 'This is the HOME page. Use the "Home page hero" block from COMPONENTS.md. Greet the person by name and say, in their terms, what their agent team will do for their goals (profile.json). Then cards linking to the chapters most useful for their goals, and a short "what happens next" steps block. Keep it to one screen and a half.',
-    'your-setup': 'This is the YOUR SETUP page. Put `<div data-machine></div>` near the top (it renders their machine). Then, from machine.json and profile.json: what is ready, what is missing and the exact command to add each missing piece (from docs/05-skills.md, docs/06-images.md and docs/08-limits-and-handover.md), and three first tasks to give the lead, written for their goals and projects.',
+    'your-setup': 'This is the YOUR SETUP page. Put `<div data-machine></div>` near the top (it renders their machine). Then, from machine.json and profile.json: what is ready, what is missing and the exact command to add each missing piece (from docs/05-skills.md, docs/06-images.md and docs/08-limits-and-handover.md), and three first tasks to give the lead, written for their goals and projects. Keep it a short checklist (about one screen and a half): link to the chapters for detail instead of copying them.',
     'recipes': 'Rewrite every recipe group around this person: their business, their projects, their goals. Keep one generic example per group too.',
 }
 os.makedirs(os.path.join(site, 'briefs'), exist_ok=True)

@@ -23,8 +23,11 @@ your tools. Do not write the page inside your thinking: create the file with a t
    "build the order page for Crumb & Co", not "build a site for my bakery". Where their machine is
    missing something the page talks about (machine.json), add a short callout saying so and how to add it.
    Do not invent facts about them; use only what profile.json and machine.json say.
+   Write facts from machine.json in plain words: "the usage meter is not installed yet", never
+   "usage mods: false" or other raw values.
 5. Add **one** visual that helps understanding: an inline SVG diagram (rules in COMPONENTS.md), a herdr
-   window, or a terminal block. Not decoration.
+   window, or a terminal block. Not decoration. Keep SVG diagrams simple: at most 6 boxes, one short label per box, labels inside
+   their box with room to spare (estimate 9 px per character at font-size 14), nothing overlapping.
 6. Check your file: `grep -c 'gradient' {{SITE}}/pages/{{SLUG}}.html` must print `0`;
    `grep -c '<script' {{SITE}}/pages/{{SLUG}}.html` must print `0`; `grep -c 'style=' {{SITE}}/pages/{{SLUG}}.html` must print `0`.
    For each command in the source (the lines inside its ``` blocks), confirm it appears on your page.
